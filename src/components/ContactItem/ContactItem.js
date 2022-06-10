@@ -1,20 +1,18 @@
 import PropTypes from 'prop-types';
-import s from './ContactItem.module.css';
+import { ListGroup, Button, Stack } from 'react-bootstrap';
 
 const ContactItem = ({ id, name, number, onDeleteContact }) => {
   return (
-    <li className={s.listItem}>
+    <ListGroup.Item>
+      <Stack direction="horizontal" gap={2}>
       <p>
         {name} : {number}
       </p>
-      <button
-        type="button"
-        className={s.button}
-        onClick={() => onDeleteContact(id)}
-      >
+      <Button variant="outline-info" type="button" className="ms-auto" onClick={() => onDeleteContact(id)}>
         Delete
-      </button>
-    </li>
+        </Button>
+        </Stack>
+    </ListGroup.Item>
   );
 };
 
@@ -26,3 +24,11 @@ ContactItem.propTypes = {
 };
 
 export default ContactItem;
+
+// <ListGroup>
+//   <ListGroup.Item>Cras justo odio</ListGroup.Item>
+//   <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+//   <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+//   <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+//   <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+// </ListGroup>

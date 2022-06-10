@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
-import s from './Filter.module.css';
+import { Form} from 'react-bootstrap';
 
 const Filter = ({ changeFilter }) => {
   return (
-    <>
-      <label className={s.label}>
-        <h2>Find contacts by name </h2>
-        <input type="text" placeholder="Search..." onChange={changeFilter} />
-      </label>
-    </>
+    <Form>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Find contacts by name</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Search..."
+          onChange={changeFilter}
+        />
+      </Form.Group>
+    </Form>
   );
 };
 
@@ -17,3 +21,4 @@ Filter.propTypes = {
 };
 
 export default Filter;
+

@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-
-import s from './ContactForm.module.css';
+import { Form, Button } from 'react-bootstrap';
 
 class ContactForm extends Component {
   static propTypes = { onSubmit: PropTypes.func.isRequired };
@@ -31,37 +30,19 @@ class ContactForm extends Component {
     const { name, number } = this.state;
     const { onChange, onSubmit } = this;
     return (
-      <form className={s.form} onSubmit={onSubmit}>
-        <div className={s.row}>
-          <label className={s.label}>
-            Name
-            <input
-              value={name}
-              type="text"
-              name="name"
-              className={s.input}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              onChange={onChange}
-              required
-            />
-          </label>
-          <label className={s.label}>
-            Number
-            <input
-              value={number}
-              type="tel"
-              name="number"
-              className={s.input}
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              onChange={onChange}
-              required
-            />
-          </label>
-        </div>
-        <button type="submit">Add contact</button>
-      </form>
+      <Form onSubmit={onSubmit}>
+  <Form.Group className="mb-3" controlId="formBasicEmail" >
+    <Form.Label> Name</Form.Label>
+          <Form.Control value={name} type="text" name="name" pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$" title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan" onChange={onChange} required/>
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Number</Form.Label>
+    <Form.Control value={number} type="tel" name="number" pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}" title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +" onChange={onChange} required/>
+  </Form.Group>
+  <Button variant="outline-info" type="submit">
+    Add contact
+  </Button>
+</Form>
     );
   }
 }

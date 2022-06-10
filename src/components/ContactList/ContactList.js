@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import ContactItem from 'components/ContactItem';
-import s from './ContactList.module.css';
+import {ListGroup} from 'react-bootstrap'
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
-    <ul className={s.list}>
+    <ListGroup>
       {contacts.map(({ id, name, number }) => (
         <ContactItem
           key={id}
@@ -14,7 +14,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
           onDeleteContact={onDeleteContact}
         />
       ))}
-    </ul>
+    </ListGroup>
   );
 };
 ContactList.propTypes = {
